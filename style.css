@@ -268,3 +268,65 @@ to{box-shadow:0 0 28px rgba(139,92,246,.9);}
     left: 45px;
   }
 }
+
+/* ===== OZLIND AI UNIQUE LOGO ===== */
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  background: linear-gradient(135deg, #9b6cff, #6435d8);
+  box-shadow:
+    0 5px 18px rgba(100, 53, 216, 0.4),
+    inset 0 1px 5px rgba(255, 255, 255, 0.5);
+
+  animation: ozlindLogoPulse 3s ease-in-out infinite;
+}
+
+/* Inner AI core */
+.logo-core {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: relative;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    #ffffff,
+    #d9c7ff 30%,
+    #9b6cff 65%,
+    #7040e8
+  );
+
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 16px rgba(196, 165, 255, 0.8);
+}
+
+/* Tiny AI spark */
+.logo-core::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+  top: -3px;
+  right: -3px;
+  box-shadow: 0 0 7px white;
+}
+
+@keyframes ozlindLogoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+  }
