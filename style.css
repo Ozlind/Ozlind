@@ -199,3 +199,72 @@ to{box-shadow:0 0 28px rgba(139,92,246,.9);}
     box-shadow: 0 7px 24px rgba(111, 66, 232, 0.5);
   }
                     }
+
+/* ===== OZLIND AI SIGNATURE LOGO ===== */
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+
+  background:
+    radial-gradient(circle at 30% 25%, #ffffff 0%, #d9c7ff 12%, transparent 28%),
+    linear-gradient(135deg, #a875ff, #7040e8 60%, #4b22b5);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow:
+    0 0 12px rgba(150, 105, 255, 0.45),
+    0 7px 22px rgba(90, 45, 190, 0.35),
+    inset 0 2px 5px rgba(255, 255, 255, 0.5);
+
+  position: relative;
+  overflow: hidden;
+
+  animation: ozlindLogoFloat 3s ease-in-out infinite;
+}
+
+/* Moving light reflection */
+.logo-mark::after {
+  content: "";
+  position: absolute;
+
+  width: 45px;
+  height: 10px;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  transform: rotate(-45deg);
+  left: -35px;
+  top: 8px;
+
+  animation: logoShine 4s ease-in-out infinite;
+}
+
+@keyframes ozlindLogoFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.05);
+  }
+}
+
+@keyframes logoShine {
+  0%, 55% {
+    left: -40px;
+  }
+
+  75%, 100% {
+    left: 45px;
+  }
+}
