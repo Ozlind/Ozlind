@@ -81,14 +81,15 @@ function showTyping() {
   const typing = document.createElement("div");
 
   typing.id = "typing";
-
-  typing.style.padding = "10px";
-  typing.style.opacity = "0.6";
+  typing.className = "typing-message";
 
   typing.innerHTML = `
-    <b>🤖 Ozlind AI</b>
-    <br>
-    <span>Thinking...</span>
+    <b>Ozlind AI</b>
+    <div class="typing-dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   `;
 
   chat.appendChild(typing);
