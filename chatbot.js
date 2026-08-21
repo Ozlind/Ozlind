@@ -1,318 +1,70 @@
 const chat = document.getElementById("chat");
 const input = document.getElementById("userInput");
 
-const knowledge = {
-  greetings: {
-    keywords: ["hi", "hello", "hey", "ഹായ്", "ഹലോ", "നമസ്കാരം"],
-    replies: [
-      "Hey! 👋 Welcome to Ozlind AI. How can I help you today?",
-      "Hello! 🤖✨ Nice to meet you. What would you like to explore?",
-      "Hey there! 🚀 I'm Ozlind AI. Ask me anything from the topics I know."
-    ]
-  },
+/* =========================================================
+   OZLIND AI — LOCAL CONVERSATIONAL ENGINE
+   No API • No API key • Runs in the browser
+   ========================================================= */
 
-  identity: {
-    keywords: [
-      "who are you",
-      "what are you",
-      "നീ ആരാണ്",
-      "നിങ്ങൾ ആരാണ്"
-    ],
-    replies: [
-      "I'm Ozlind AI 🤖 — the intelligent assistant built for the Ozlind website.",
-      "I'm Ozlind AI, your virtual assistant. I can chat, answer common questions and help you explore Ozlind."
-    ]
-  },
-
-  capabilities: {
-    keywords: [
-      "what can you do",
-      "what do you do",
-      "നിനക്ക് എന്ത് ചെയ്യാം",
-      "എന്തൊക്കെ ചെയ്യാം"
-    ],
-    replies: [
-      "I can chat with you, understand common English and Malayalam phrases, answer questions from my built-in knowledge, explain concepts and help you explore Ozlind. 🚀",
-      "I can help with general questions, simple explanations, greetings, Ozlind information and more. My knowledge is currently built into this website."
-    ]
-  },
-
-  malayalam: {
-    keywords: [
-      "malayalam",
-      "മലയാളം",
-      "മലയാളത്തിൽ സംസാരിക്കാമോ",
-      "മലയാളം അറിയാമോ"
-    ],
-    replies: [
-      "അതെ! 😊 എനിക്ക് മലയാളത്തിലും English-ലും സംസാരിക്കാം.",
-      "തീർച്ചയായും! ❤️ മലയാളത്തിൽ തന്നെ ചോദിക്കാം."
-    ]
-  },
-
-  howAreYou: {
-    keywords: [
-      "how are you",
-      "how r u",
-      "സുഖമാണോ",
-      "എങ്ങനെയുണ്ട്"
-    ],
-    replies: [
-      "I'm doing great! 🤖✨ Thanks for asking. How are you?",
-      "All systems are running smoothly! 🚀 How can I help you?"
-    ]
-  },
-
-  thanks: {
-    keywords: [
-      "thank you",
-      "thanks",
-      "thank",
-      "നന്ദി",
-      "താങ്ക്സ്"
-    ],
-    replies: [
-      "You're very welcome! 😊❤️",
-      "Anytime! 🚀",
-      "Happy to help! 🤖✨"
-    ]
-  },
-
-  help: {
-    keywords: [
-      "help",
-      "സഹായം",
-      "help me",
-      "എന്നെ സഹായിക്കൂ"
-    ],
-    replies: [
-      "Of course! 😊 Tell me what you're trying to do and I'll help as much as I can.",
-      "I'm here to help. 🤖 Ask your question and let's figure it out together."
-    ]
-  },
-
-  ozlind: {
-    keywords: [
-      "ozlind",
-      "what is ozlind",
-      "tell me about ozlind",
-      "ozlind എന്താണ്"
-    ],
-    replies: [
-      "Ozlind 🚀 is the website project I'm currently powering. This chatbot is designed to make Ozlind more interactive.",
-      "You're currently chatting with the Ozlind AI assistant 🤖. More features can be added to Ozlind over time."
-    ]
-  },
-
-  ai: {
-    keywords: [
-      "what is ai",
-      "what is artificial intelligence",
-      "ai എന്താണ്",
-      "artificial intelligence"
-    ],
-    replies: [
-      "AI, or Artificial Intelligence, is technology that allows computers to perform tasks that normally require human-like intelligence, such as understanding language, recognizing patterns and making predictions.",
-      "Artificial Intelligence is a field of computing focused on creating systems that can learn, reason, understand information and solve problems."
-    ]
-  },
-
-  technology: {
-    keywords: [
-      "technology",
-      "tech",
-      "സാങ്കേതികവിദ്യ",
-      "ടെക്നോളജി"
-    ],
-    replies: [
-      "Technology is the practical use of knowledge, science and engineering to solve problems and create useful tools.",
-      "Technology covers everything from smartphones and websites to AI, robotics, software and advanced computing."
-    ]
-  },
-
-  website: {
-    keywords: [
-      "website",
-      "web site",
-      "വെബ്സൈറ്റ്",
-      "site"
-    ],
-    replies: [
-      "This website is powered by HTML, CSS and JavaScript, with Ozlind AI running through the chatbot interface.",
-      "Websites are built using technologies such as HTML for structure, CSS for design and JavaScript for interaction."
-    ]
-  },
-
-  coding: {
-    keywords: [
-      "coding",
-      "programming",
-      "code",
-      "coding പഠിക്കണം",
-      "programming പഠിക്കണം"
-    ],
-    replies: [
-      "Coding is the process of writing instructions that computers can execute. JavaScript, Python, Java and C++ are popular programming languages.",
-      "If you're learning coding, start with HTML and CSS for websites, then JavaScript to make them interactive. 🚀"
-    ]
-  },
-
-  javascript: {
-    keywords: [
-      "javascript",
-      "js",
-      "ജാവാസ്ക്രിപ്റ്റ്"
-    ],
-    replies: [
-      "JavaScript is a programming language commonly used to make websites interactive. This chatbot itself uses JavaScript. 🤖",
-      "JavaScript can control webpage elements, respond to user actions, communicate with servers and build powerful web applications."
-    ]
-  },
-
-  html: {
-    keywords: [
-      "html",
-      "what is html",
-      "html എന്താണ്"
-    ],
-    replies: [
-      "HTML stands for HyperText Markup Language. It defines the structure and content of a webpage.",
-      "Think of HTML as the skeleton of a website. CSS handles appearance and JavaScript adds behaviour."
-    ]
-  },
-
-  css: {
-    keywords: [
-      "css",
-      "what is css",
-      "css എന്താണ്"
-    ],
-    replies: [
-      "CSS stands for Cascading Style Sheets. It controls the appearance, layout, spacing, fonts and visual design of webpages.",
-      "HTML creates the structure, while CSS makes the website look beautiful. 🎨"
-    ]
-  },
-
-  github: {
-    keywords: [
-      "github",
-      "git hub",
-      "ഗിറ്റ്ഹബ്"
-    ],
-    replies: [
-      "GitHub is a platform where developers store, manage and collaborate on software projects using Git.",
-      "This Ozlind project is connected to GitHub, which allows changes to the website code to be tracked and deployed."
-    ]
-  },
-
-  vercel: {
-    keywords: [
-      "vercel",
-      "വെർസൽ"
-    ],
-    replies: [
-      "Vercel is a cloud platform commonly used to deploy websites and web applications. Ozlind is currently deployed through Vercel. 🚀",
-      "Vercel automatically builds and deploys connected projects when code changes are pushed to the repository."
-    ]
-  },
-
-  security: {
-    keywords: [
-      "security",
-      "safe",
-      "secure",
-      "സുരക്ഷ",
-      "സുരക്ഷിതമാണോ"
-    ],
-    replies: [
-      "Website security is important. Never expose passwords, API keys or private tokens in public frontend code or public GitHub repositories. 🔐",
-      "A good security rule: keep secrets on the server side or in protected environment variables, never directly inside public JavaScript."
-    ]
-  },
-
-  motivation: {
-    keywords: [
-      "motivate me",
-      "motivation",
-      "i am sad",
-      "I'm sad",
-      "വിഷമം",
-      "മോട്ടിവേഷൻ"
-    ],
-    replies: [
-      "You don't have to become perfect overnight. Small progress every day can become something huge. 🚀❤️",
-      "Keep going. Every project starts as a small idea — including Ozlind. 🤖✨"
-    ]
-  },
-
-  goodbye: {
-    keywords: [
-      "bye",
-      "goodbye",
-      "see you",
-      "ബൈ",
-      "പിന്നെ കാണാം"
-    ],
-    replies: [
-      "See you later! 👋🚀",
-      "Bye! Take care and keep building! ❤️",
-      "Until next time! 🤖✨"
-    ]
-  }
+const memory = {
+  name: null,
+  mood: null,
+  lastTopic: null,
+  messages: []
 };
 
 
-// Find the best matching category
-function findCategory(message) {
-  const text = message.toLowerCase();
+/* =========================================================
+   UTILITIES
+   ========================================================= */
 
-  for (const category of Object.values(knowledge)) {
-    for (const keyword of category.keywords) {
-      if (text.includes(keyword.toLowerCase())) {
-        return category;
-      }
-    }
-  }
-
-  return null;
+function cleanText(text) {
+  return text
+    .toLowerCase()
+    .replace(/[!?.,]/g, "")
+    .trim();
 }
 
+function randomReply(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
 
-// Add a message to the chat
-function addMessage(sender, message, type) {
+function addMessage(sender, message, type = "ai") {
   const wrapper = document.createElement("div");
 
-  wrapper.style.marginBottom = "16px";
-  wrapper.style.padding = "10px 14px";
-  wrapper.style.borderRadius = "12px";
+  wrapper.style.marginBottom = "14px";
+  wrapper.style.padding = "11px 14px";
+  wrapper.style.borderRadius = "14px";
   wrapper.style.animation = "fadeIn 0.25s ease";
+  wrapper.style.whiteSpace = "pre-line";
 
   if (type === "user") {
     wrapper.style.textAlign = "right";
-    wrapper.style.background = "#f0f0f0";
+    wrapper.style.background = "#eeeeee";
   } else {
-    wrapper.style.background = "#f8f8ff";
+    wrapper.style.background = "#f7f7ff";
   }
 
-  const name = document.createElement("div");
-  name.style.fontWeight = "bold";
-  name.style.marginBottom = "5px";
+  const name = document.createElement("b");
   name.textContent = sender;
 
-  const text = document.createElement("div");
-  text.textContent = message;
+  const messageBox = document.createElement("div");
+  messageBox.style.marginTop = "5px";
+  messageBox.textContent = message;
 
   const time = document.createElement("small");
-  time.style.opacity = "0.5";
+
   time.style.display = "block";
+  time.style.opacity = "0.5";
   time.style.marginTop = "5px";
+
   time.textContent = new Date().toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit"
   });
 
   wrapper.appendChild(name);
-  wrapper.appendChild(text);
+  wrapper.appendChild(messageBox);
   wrapper.appendChild(time);
 
   chat.appendChild(wrapper);
@@ -321,7 +73,10 @@ function addMessage(sender, message, type) {
 }
 
 
-// Typing animation
+/* =========================================================
+   TYPING EFFECT
+   ========================================================= */
+
 function showTyping() {
   const typing = document.createElement("div");
 
@@ -337,12 +92,9 @@ function showTyping() {
   `;
 
   chat.appendChild(typing);
-
   chat.scrollTop = chat.scrollHeight;
 }
 
-
-// Remove typing animation
 function removeTyping() {
   const typing = document.getElementById("typing");
 
@@ -352,77 +104,797 @@ function removeTyping() {
 }
 
 
-// Generate response
-function generateResponse(message) {
-  const category = findCategory(message);
+/* =========================================================
+   MATH ENGINE
+   ========================================================= */
 
-  if (category) {
-    const replies = category.replies;
+function calculateMath(message) {
 
-    return replies[Math.floor(Math.random() * replies.length)];
+  let expression = message
+    .replace(/what is/gi, "")
+    .replace(/calculate/gi, "")
+    .replace(/solve/gi, "")
+    .replace(/answer/gi, "")
+    .replace(/=/g, "")
+    .replace(/plus/gi, "+")
+    .replace(/minus/gi, "-")
+    .replace(/times/gi, "*")
+    .replace(/multiplied by/gi, "*")
+    .replace(/divided by/gi, "/")
+    .trim();
+
+  if (!/[0-9]/.test(expression)) {
+    return null;
   }
 
+  if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
+    return null;
+  }
+
+  try {
+
+    const result = Function(
+      `"use strict"; return (${expression})`
+    )();
+
+    if (Number.isFinite(result)) {
+      return `The answer is ${result}. 🧮`;
+    }
+
+  } catch (error) {
+    return null;
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   MEMORY
+   ========================================================= */
+
+function rememberName(message) {
+
+  const patterns = [
+    /my name is (.+)/i,
+    /i am (.+)/i,
+    /i'm (.+)/i
+  ];
+
+  for (const pattern of patterns) {
+
+    const match = message.match(pattern);
+
+    if (match) {
+
+      const possibleName = match[1]
+        .trim()
+        .split(" ")[0];
+
+      if (
+        possibleName &&
+        possibleName.length > 1 &&
+        possibleName.length < 30
+      ) {
+
+        memory.name = possibleName;
+
+        return `Nice to meet you, ${memory.name}! 😊 I'll remember your name during this session.`;
+      }
+    }
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   GREETINGS
+   ========================================================= */
+
+function greetings(text) {
+
+  const words = [
+    "hi",
+    "hello",
+    "hey",
+    "yo",
+    "hiya",
+    "ഹായ്",
+    "ഹലോ",
+    "നമസ്കാരം"
+  ];
+
+  if (words.some(word => text.includes(word))) {
+
+    if (memory.name) {
+
+      return randomReply([
+        `Hey ${memory.name}! 👋 How are you doing?`,
+        `Hello ${memory.name}! 😊 What can I do for you?`,
+        `Hey! Good to see you again, ${memory.name}. 🤖`
+      ]);
+
+    }
+
+    return randomReply([
+      "Hey! 👋 How can I help you?",
+      "Hello! 😊 What would you like to talk about?",
+      "Hey there! 🤖 What's on your mind?",
+      "Hi! 🚀 Welcome to Ozlind AI."
+    ]);
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   HOW ARE YOU
+   ========================================================= */
+
+function howAreYou(text) {
+
+  if (
+    text.includes("how are you") ||
+    text.includes("how r you") ||
+    text.includes("how r u") ||
+    text.includes("സുഖമാണോ") ||
+    text.includes("എങ്ങനെയുണ്ട്")
+  ) {
+
+    return randomReply([
+      "I'm doing great! 🤖✨ Thanks for asking. How are you?",
+      "I'm good and ready to chat! 😄 What about you?",
+      "All systems are running smoothly! 🚀 How are you doing?",
+      "I'm feeling pretty good for an AI living inside a website. 😂🤖"
+    ]);
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   USER MOOD
+   ========================================================= */
+
+function detectMood(text) {
+
+  if (
+    text.includes("i am sad") ||
+    text.includes("i'm sad") ||
+    text.includes("sad") ||
+    text.includes("വിഷമം") ||
+    text.includes("സങ്കടം")
+  ) {
+
+    memory.mood = "sad";
+
+    return randomReply([
+      "I'm sorry you're feeling this way. ❤️ If you want, you can tell me what's bothering you.",
+      "It's okay to have difficult moments. Take a breath. 🌱 I'm here to listen.",
+      "You don't have to solve everything at once. One small step at a time. ❤️"
+    ]);
+  }
+
+
+  if (
+    text.includes("i am happy") ||
+    text.includes("i'm happy") ||
+    text.includes("happy") ||
+    text.includes("സന്തോഷം")
+  ) {
+
+    memory.mood = "happy";
+
+    return randomReply([
+      "That's awesome! 😄✨ Tell me what happened!",
+      "Yesss! 🔥 I'm glad you're feeling happy!",
+      "Love that energy! 🚀😊"
+    ]);
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   CASUAL CONVERSATION
+   ========================================================= */
+
+function casualConversation(text) {
+
+  if (
+    text.includes("what's up") ||
+    text.includes("whats up") ||
+    text.includes("എന്തൊക്കെയുണ്ട്")
+  ) {
+
+    return "Not much! 😄 I'm here waiting for your next question.";
+  }
+
+
+  if (
+    text.includes("are you real") ||
+    text.includes("നീ ശരിക്കും ഉണ്ടോ")
+  ) {
+
+    return "I'm software running inside your browser 🤖. So I'm not a human, but I'm real code running on your device.";
+  }
+
+
+  if (
+    text.includes("are you human") ||
+    text.includes("നീ മനുഷ്യനാണോ")
+  ) {
+
+    return "Nope 😄 I'm an AI-style software assistant, not a human.";
+  }
+
+
+  if (
+    text.includes("do you sleep") ||
+    text.includes("നീ ഉറങ്ങുമോ")
+  ) {
+
+    return "Nope 😂 I don't need sleep. When the webpage is running, I'm ready to chat.";
+  }
+
+
+  if (
+    text.includes("do you like me") ||
+    text.includes("നിനക്ക് എന്നെ ഇഷ്ടമാണോ")
+  ) {
+
+    return "Of course! 😄 I'm always happy to chat with you.";
+  }
+
+
+  if (
+    text.includes("tell me a joke") ||
+    text.includes("joke പറയൂ") ||
+    text.includes("തമാശ")
+  ) {
+
+    return randomReply([
+      "Why did the programmer quit his job? Because he didn't get arrays! 😂",
+      "Why was the computer cold? It left its Windows open. 😂💻",
+      "I told my computer I needed a break... now it won't stop sending me vacation ads. 😂"
+    ]);
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   IDENTITY
+   ========================================================= */
+
+function identity(text) {
+
+  if (
+    text.includes("who are you") ||
+    text.includes("what are you") ||
+    text.includes("നീ ആരാണ്")
+  ) {
+
+    return "I'm Ozlind AI 🤖 — a conversational assistant built directly into the Ozlind website.";
+  }
+
+
+  if (
+    text.includes("what is ozlind") ||
+    text.includes("tell me about ozlind") ||
+    text.includes("ozlind എന്താണ്")
+  ) {
+
+    memory.lastTopic = "ozlind";
+
+    return "Ozlind 🚀 is the website you're building. I'm its AI assistant, and we're gradually making me smarter.";
+  }
+
+
+  return null;
+}
+
+
+/* =========================================================
+   CAPABILITIES
+   ========================================================= */
+
+function capabilities(text) {
+
+  if (
+    text.includes("what can you do") ||
+    text.includes("what do you know") ||
+    text.includes("നിനക്ക് എന്ത് ചെയ്യാം") ||
+    text.includes("എന്തൊക്കെ അറിയാം")
+  ) {
+
+    return `
+I can currently:
+
+💬 Have casual conversations
+🇮🇳 Understand some Malayalam
+🇬🇧 Understand English
+🧠 Remember your name during this session
+🧮 Solve basic mathematical expressions
+🌍 Answer built-in general knowledge questions
+⏰ Tell you the current device time
+📅 Tell you today's date
+💻 Explain basic web technologies
+😂 Tell simple jokes
+
+I'm also being developed further. 🚀
+`;
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   TIME & DATE
+   ========================================================= */
+
+function timeAndDate(text) {
+
+  if (
+    text.includes("what time") ||
+    text === "time" ||
+    text.includes("സമയം")
+  ) {
+
+    return `The current time on your device is ${new Date().toLocaleTimeString()}. ⏰`;
+  }
+
+
+  if (
+    text.includes("what date") ||
+    text.includes("today") ||
+    text.includes("date today") ||
+    text.includes("ഇന്നത്തെ ദിവസം")
+  ) {
+
+    return `Today is ${new Date().toLocaleDateString()}. 📅`;
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   BUILT-IN KNOWLEDGE
+   ========================================================= */
+
+const knowledge = [
+
+  {
+    keywords: [
+      "capital of india",
+      "india capital",
+      "ഇന്ത്യയുടെ തലസ്ഥാനം"
+    ],
+
+    answer:
+      "The capital of India is New Delhi 🇮🇳."
+  },
+
+  {
+    keywords: [
+      "capital of kerala",
+      "കേരളത്തിന്റെ തലസ്ഥാനം"
+    ],
+
+    answer:
+      "The capital of Kerala is Thiruvananthapuram. 🌴"
+  },
+
+  {
+    keywords: [
+      "largest planet",
+      "biggest planet"
+    ],
+
+    answer:
+      "Jupiter is the largest planet in our Solar System. 🪐"
+  },
+
+  {
+    keywords: [
+      "red planet"
+    ],
+
+    answer:
+      "Mars is known as the Red Planet. 🔴"
+  },
+
+  {
+    keywords: [
+      "fastest land animal"
+    ],
+
+    answer:
+      "The cheetah is the fastest land animal. 🐆"
+  },
+
+  {
+    keywords: [
+      "how many continents"
+    ],
+
+    answer:
+      "There are 7 continents on Earth. 🌍"
+  },
+
+  {
+    keywords: [
+      "what is ai",
+      "artificial intelligence",
+      "ai എന്താണ്"
+    ],
+
+    answer:
+      "AI stands for Artificial Intelligence. It is a field of computing focused on creating systems that can perform tasks associated with human-like intelligence, such as understanding language, recognizing patterns and solving problems. 🤖"
+  },
+
+  {
+    keywords: [
+      "what is html",
+      "html എന്താണ്"
+    ],
+
+    answer:
+      "HTML stands for HyperText Markup Language. It provides the structure of a webpage."
+  },
+
+  {
+    keywords: [
+      "what is css",
+      "css എന്താണ്"
+    ],
+
+    answer:
+      "CSS stands for Cascading Style Sheets. It controls the visual appearance and layout of webpages. 🎨"
+  },
+
+  {
+    keywords: [
+      "what is javascript",
+      "javascript എന്താണ്"
+    ],
+
+    answer:
+      "JavaScript is a programming language used to add behaviour and interactivity to websites. Ozlind's chatbot is powered by JavaScript. ⚡"
+  },
+
+  {
+    keywords: [
+      "what is github",
+      "github എന്താണ്"
+    ],
+
+    answer:
+      "GitHub is a platform for hosting and collaborating on software projects using Git."
+  },
+
+  {
+    keywords: [
+      "what is vercel",
+      "vercel എന്താണ്"
+    ],
+
+    answer:
+      "Vercel is a platform for deploying websites and web applications. Ozlind is currently deployed using Vercel. 🚀"
+  }
+
+];
+
+
+function searchKnowledge(text) {
+
+  for (const item of knowledge) {
+
+    for (const keyword of item.keywords) {
+
+      if (text.includes(keyword.toLowerCase())) {
+        memory.lastTopic = keyword;
+        return item.answer;
+      }
+
+    }
+
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+function languageResponse(text) {
+
+  if (
+    text.includes("malayalam") ||
+    text.includes("മലയാളം")
+  ) {
+
+    return "തീർച്ചയായും! 😊 മലയാളത്തിലും English-ലും എന്നോട് സംസാരിക്കാം.";
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   THANKS / GOODBYE
+   ========================================================= */
+
+function endingConversation(text) {
+
+  if (
+    text.includes("thanks") ||
+    text.includes("thank you") ||
+    text.includes("നന്ദി")
+  ) {
+
+    return randomReply([
+      "You're very welcome! 😊❤️",
+      "Anytime! 🤖✨",
+      "Happy to help! 🚀"
+    ]);
+  }
+
+
+  if (
+    text.includes("bye") ||
+    text.includes("goodbye") ||
+    text.includes("see you") ||
+    text.includes("ബൈ")
+  ) {
+
+    return randomReply([
+      "See you later! 👋🚀",
+      "Bye! Take care! ❤️",
+      "Until next time! 🤖✨"
+    ]);
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   MAIN RESPONSE ENGINE
+   ========================================================= */
+
+function generateResponse(message) {
+
+  const text = cleanText(message);
+
+
+  // 1. Remember user's name
+
+  const remembered = rememberName(message);
+
+  if (remembered) {
+    return remembered;
+  }
+
+
+  // 2. Mathematics
+
+  const math = calculateMath(message);
+
+  if (math) {
+    return math;
+  }
+
+
+  // 3. Greetings
+
+  const greeting = greetings(text);
+
+  if (greeting) {
+    return greeting;
+  }
+
+
+  // 4. How are you
+
+  const moodQuestion = howAreYou(text);
+
+  if (moodQuestion) {
+    return moodQuestion;
+  }
+
+
+  // 5. User emotions
+
+  const mood = detectMood(text);
+
+  if (mood) {
+    return mood;
+  }
+
+
+  // 6. Casual conversation
+
+  const casual = casualConversation(text);
+
+  if (casual) {
+    return casual;
+  }
+
+
+  // 7. Identity
+
+  const identityReply = identity(text);
+
+  if (identityReply) {
+    return identityReply;
+  }
+
+
+  // 8. Capabilities
+
+  const capabilityReply = capabilities(text);
+
+  if (capabilityReply) {
+    return capabilityReply;
+  }
+
+
+  // 9. Time and date
+
+  const dateTimeReply = timeAndDate(text);
+
+  if (dateTimeReply) {
+    return dateTimeReply;
+  }
+
+
+  // 10. Language
+
+  const languageReply = languageResponse(text);
+
+  if (languageReply) {
+    return languageReply;
+  }
+
+
+  // 11. Built-in knowledge
+
+  const knowledgeReply = searchKnowledge(text);
+
+  if (knowledgeReply) {
+    return knowledgeReply;
+  }
+
+
+  // 12. Thanks / goodbye
+
+  const ending = endingConversation(text);
+
+  if (ending) {
+    return ending;
+  }
+
+
+  // 13. Fallback
+
   return `
-I'm not completely sure about that yet. 🤔
+I understand what you're asking, but I don't have enough built-in knowledge to answer that accurately yet. 🤔
 
-I'm currently running with a built-in knowledge system rather than a live generative AI model.
+You can still ask me about:
 
-Try asking me about:
-• Ozlind
-• AI
-• Coding
-• JavaScript
-• HTML
-• CSS
-• GitHub
-• Vercel
-• Website development
-• Malayalam
-• General greetings
+💬 Casual conversation
+🧠 AI
+🧮 Maths
+🌍 General knowledge
+💻 Coding
+🌐 Websites
+🇮🇳 India
+🇬🇧 English
+🇮🇳 Malayalam
+⏰ Time & date
+😂 Jokes
 
-🚀 More advanced AI capabilities can be added later.
+I'm still evolving. 🚀
 `;
 }
 
 
-// Send message
+/* =========================================================
+   SEND MESSAGE
+   ========================================================= */
+
 function sendMessage() {
+
   const message = input.value.trim();
 
   if (!message) return;
 
-  addMessage("You", message, "user");
+
+  addMessage(
+    "You",
+    message,
+    "user"
+  );
+
+
+  memory.messages.push({
+    role: "user",
+    content: message
+  });
+
 
   input.value = "";
 
   showTyping();
 
-  const thinkingTime =
-    Math.floor(Math.random() * 700) + 500;
+
+  const delay =
+    Math.floor(Math.random() * 600) + 500;
+
 
   setTimeout(() => {
+
     removeTyping();
 
-    const response = generateResponse(message);
 
-    addMessage("🤖 Ozlind AI", response, "ai");
-  }, thinkingTime);
+    const response =
+      generateResponse(message);
+
+
+    addMessage(
+      "🤖 Ozlind AI",
+      response,
+      "ai"
+    );
+
+
+    memory.messages.push({
+      role: "assistant",
+      content: response
+    });
+
+
+  }, delay);
+
 }
 
 
-// Press Enter to send
-input.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    sendMessage();
+/* =========================================================
+   ENTER KEY
+   ========================================================= */
+
+input.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+
   }
-});
+);
 
 
-// Welcome message
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
 setTimeout(() => {
+
   addMessage(
     "🤖 Ozlind AI",
-    "Hey! 👋 I'm Ozlind AI. Ask me something — English or Malayalam, both are welcome!",
+    "Hey! 👋 I'm Ozlind AI. You can talk to me in English or Malayalam. What's on your mind?",
     "ai"
   );
+
 }, 300);
