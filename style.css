@@ -394,3 +394,14 @@ to{box-shadow:0 0 28px rgba(139,92,246,.9);}
   background:#07122b;
   padding:10px;
   }
+/* Premium message animation */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+  }
