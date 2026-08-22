@@ -441,3 +441,11 @@ to{box-shadow:0 0 28px rgba(139,92,246,.9);}
 .header p{
   color:#B8B8D8;
 }
+
+.input-area button:active{
+  transform:scale(.92);
+}
+
+.input-area button:hover{
+  background:#8B5CF6;
+}
