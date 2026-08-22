@@ -690,7 +690,7 @@ function endingConversation(text) {
    MAIN RESPONSE ENGINE
    ========================================================= */
 
-function generateResponse(message) {
+async function generateResponse(message) {
 
   const text = cleanText(message);
 
