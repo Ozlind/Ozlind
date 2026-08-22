@@ -400,7 +400,18 @@ function identity(text) {
 
     return "I'm Ozlind AI ✦ — a conversational assistant built directly into the Ozlind website.";
   }
+   
+if (
+text.includes("who made you") ||
+text.includes("who created you") ||
+text.includes("who built you") ||
+text.includes("who is your creator") ||
+text.includes("ആരാ നിന്നെ ഉണ്ടാക്കിയത്")
+) {
 
+return "I was created by Athul, the owner of Ozlind AI. 👨‍💻";
+
+}
 
   if (
     text.includes("what is ozlind") ||
