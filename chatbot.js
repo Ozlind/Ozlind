@@ -803,27 +803,29 @@ async function generateResponse(message) {
   }
 
 
-  // 13. Fallback
+  // 13. Fallback (AI-powered)
 
-  return `
-I understand what you're asking, but I don't have enough built-in knowledge to answer that accurately yet. 🤔
+try {
 
-You can still ask me about:
+const res = await fetch("/api/chat", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ message: message })
+});
 
-💬 Casual conversation
-🧠 AI
-🧮 Maths
-🌍 General knowledge
-💻 Coding
-🌐 Websites
-🇮🇳 India
-🇬🇧 English
-🇮🇳 Malayalam
-⏰ Time & date
-😂 Jokes
+const data = await res.json();
 
-I'm still evolving. 🚀
-`;
+if (data.reply) {
+return data.reply;
+}
+
+return "Sorry, I couldn't think of a reply right now. 🤔";
+
+} catch (error) {
+
+return "Hmm, something went wrong while thinking. Please try again. 🤖⚠️";
+
+}
 }
 
 
