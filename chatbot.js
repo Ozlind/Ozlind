@@ -386,7 +386,7 @@ function identity(text) {
     text.includes("നീ ആരാണ്")
   ) {
 
-    return "I'm Ozlind AI 🤖 — a conversational assistant built directly into the Ozlind website.";
+    return "I'm Ozlind AI ✦ — a conversational assistant built directly into the Ozlind website.";
   }
 
 
@@ -858,7 +858,7 @@ function sendMessage() {
 
 
     addMessage(
-      "🤖 Ozlind AI",
+      "Ozlind AI ✦",
       response,
       "ai"
     );
@@ -898,7 +898,7 @@ input.addEventListener(
 setTimeout(() => {
 
   addMessage(
-    "🤖 Ozlind AI",
+    "Ozlind AI ✦",
     "Hey! 👋 I'm Ozlind AI. You can talk to me in English or Malayalam. What's on your mind?",
     "ai"
   );
