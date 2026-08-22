@@ -80,8 +80,13 @@ margin-left:auto;
   background:#7C4DFF;
   color:white;
   font-size:18px;
+  box-shadow: 0 0 18px rgba(124,77,255,.45);
+transition: .2s;
 }
 
+.input-area button:hover{
+  transform: scale(1.06);
+  }
 .avatar{
 width:58px;
 height:58px;
