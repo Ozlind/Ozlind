@@ -12,11 +12,24 @@ display:flex;
 flex-direction:column;
 }
 .header{
-padding:18px;
-text-align:center;
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky;
+  top:0;
+  padding:18px;
+  border-radius:0 0 22px 22px;
+  background:rgba(15,18,40,.82);
+  backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.header h2{
+  color:#fff;
+  font-size:22px;
+}
+
+.header p{
+  color:#B9C0FF;
+  font-size:13px;
 }
 .header h2{margin:0;color:#b388ff;}
 .header p{margin:4px 0 0;color:#bbb;font-size:13px;}
