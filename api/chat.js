@@ -27,10 +27,11 @@ module.exports = async function handler(req, res) {
     });
 
     const data = await response.json();
-
-    console.log("GROQ RESPONSE:", JSON.stringify(data));
     const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a reply.";
 
     return res.status(200).json({ reply });
 
   } catch (error) {
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
