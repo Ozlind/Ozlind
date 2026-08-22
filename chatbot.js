@@ -39,12 +39,15 @@ function addMessage(sender, message, type = "ai") {
   wrapper.style.whiteSpace = "pre-line";
 
   if (type === "user") {
-    wrapper.style.textAlign = "right";
-    wrapper.style.background = "#eeeeee";
-  } else {
-    wrapper.style.background = "#18122B";
-wrapper.style.color = "#FFFFFF";
-wrapper.style.border = "1px solid #7C4DFF";
+  wrapper.style.textAlign = "right";
+  wrapper.style.background = "#7C4DFF";
+  wrapper.style.color = "#FFFFFF";
+  wrapper.style.marginLeft = "50px";
+} else {
+  wrapper.style.background = "#18122B";
+  wrapper.style.color = "#FFFFFF";
+  wrapper.style.border = "1px solid #7C4DFF";
+  wrapper.style.marginRight = "50px";
   }
 
   const name = document.createElement("b");
