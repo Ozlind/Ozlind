@@ -821,7 +821,10 @@ try {
 const res = await fetch("/api/chat", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
-body: JSON.stringify({ message: message })
+body: JSON.stringify({
+message: message,
+history: memory.messages.slice(-10)
+})
 });
 
 const data = await res.json();
