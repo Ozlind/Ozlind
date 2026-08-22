@@ -1,8 +1,8 @@
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0b1020;
-color:white;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(180deg,#0B1020,#141B34,#1A1147);
+  color:white;
 }
 .container{
 max-width:700px;
