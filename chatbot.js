@@ -42,7 +42,9 @@ function addMessage(sender, message, type = "ai") {
     wrapper.style.textAlign = "right";
     wrapper.style.background = "#eeeeee";
   } else {
-    wrapper.style.background = "#f7f7ff";
+    wrapper.style.background = "#18122B";
+wrapper.style.color = "#FFFFFF";
+wrapper.style.border = "1px solid #7C4DFF";
   }
 
   const name = document.createElement("b");
