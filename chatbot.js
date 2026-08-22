@@ -55,7 +55,19 @@ function addMessage(sender, message, type = "ai") {
 
   const messageBox = document.createElement("div");
   messageBox.style.marginTop = "5px";
+  if (type === "ai") {
+  let i = 0;
+  messageBox.textContent = "";
+
+  const typing = setInterval(() => {
+    messageBox.textContent += message.charAt(i);
+    i++;
+
+    if (i >= message.length) clearInterval(typing);
+  }, 18);
+} else {
   messageBox.textContent = message;
+  }
 
   const time = document.createElement("small");
 
