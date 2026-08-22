@@ -375,3 +375,22 @@ to{box-shadow:0 0 28px rgba(139,92,246,.9);}
     opacity: 1;
   }
 }
+
+.container{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+#chat{
+  flex:1;
+  overflow-y:auto;
+  padding-bottom:12px;
+}
+
+.input-area{
+  position:sticky;
+  bottom:0;
+  background:#07122b;
+  padding:10px;
+  }
