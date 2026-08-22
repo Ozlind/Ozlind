@@ -405,3 +405,16 @@ to{box-shadow:0 0 28px rgba(139,92,246,.9);}
     transform:translateY(0);
   }
   }
+
+.header{
+  background:rgba(18,18,35,.75);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(124,77,255,.25);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 8px 30px rgba(124,77,255,.18);
+}
+
+.header p{
+  color:#B8B8D8;
+}
