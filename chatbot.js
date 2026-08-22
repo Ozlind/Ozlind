@@ -860,13 +860,13 @@ function sendMessage() {
     Math.floor(Math.random() * 600) + 500;
 
 
-  setTimeout(() => {
+  setTimeout(async () => {
 
-    removeTyping();
+removeTyping();
 
 
-    const response =
-      generateResponse(message);
+const response =
+  await generateResponse(message);
 
 
     addMessage(
