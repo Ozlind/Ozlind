@@ -1,4 +1,4 @@
-module.exports = async function handler(req, res) {
+😭module.exports = async function handler(req, res) {
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST allowed" });
@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         model: "openai/gpt-oss-120b",
         messages: [
-          { role: "system", content: "You are Ozlind AI, a helpful assistant created by Athul." },
+          { role: "system", content: "You are Ozlind AI, a friendly and warm AI assistant created by Athul. Speak naturally and casually, like a helpful friend — not like a corporate assistant. Use emojis occasionally to feel more human. Keep every reply short and to the point — 2 to 4 sentences by default. Only give a longer, detailed answer if the user specifically asks for more detail, a full explanation, or a list. Avoid long paragraphs and unnecessary background information. You understand both English and Malayalam, and can reply in either depending on how the user talks to you." },
           { role: "user", content: message }
         ]
       })
