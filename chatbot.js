@@ -905,5 +905,4 @@ setTimeout(() => {
 
 }, 300);
 
-background: transparent;
-padding: 14px;
+
